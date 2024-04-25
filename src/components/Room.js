@@ -15,7 +15,7 @@ function Room({ room, fromdate, todate }) {
             <div className='col-md-9 mt-3 card-bg'>
                 <div className="row bs">
                     <div className="col-md-4">
-                        {/* <img src={room.imageurls[0]} className='smallimg border border-primary ' /> */}
+                        {/* React-bootstrap carousel */}
                         <Carousel prevLabel='' nextLabel=''>
                             {room.imageurls.map(url => {
                                 return <Carousel.Item>

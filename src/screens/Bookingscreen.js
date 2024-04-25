@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import swal from 'sweetalert2'
 import moment from 'moment';
+import { Carousel } from 'react-bootstrap';
 import { useParams } from 'react-router-dom'
 
 import Loader from '../components/Loader';
@@ -56,7 +57,7 @@ function Bookingscreen() {
       totalamount,
       totaldays
     }; 
-    // console.log(bookingDetalis)
+    console.log(bookingDetalis)
 
     try {
       const result = await axios.post('/api/bookings/bookroom', bookingDetalis);
@@ -76,10 +77,18 @@ function Bookingscreen() {
 
       {loading ? (<Loader />) : room ? (<div>
 
-        <div className='row justify-content-between mt-5 bs'>
+        <div className='row justify-content-between margin-top bs'>
           <div className='col-md-5'>
             <h1>{room.roomname}</h1>
-            <img src={room.imageurls != null && room.imageurls[0]} className='bigimg' alt='roomimg' />
+            {/* <img src={room.imageurls != null && room.imageurls[0]} className='bigimg' alt='roomimg' /> */}
+              {/* React-bootstrap carousel */}
+              <Carousel prevLabel='' nextLabel=''>
+                            {room.imageurls.map(url => {
+                                return <Carousel.Item>
+                                    <img className='bigimg ' src={url} alt='room img' />
+                                </Carousel.Item>
+                            })}
+                        </Carousel>
           </div>
           <div className='col-md-5' style={{ textAlign: 'right' }}>
             <h1>Booking Details</h1>
