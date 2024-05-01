@@ -51,19 +51,20 @@ function Bookingscreen() {
   async function bookRoom() {
     const bookingDetalis = {
       room,
-      user: JSON.parse(localStorage.getItem('currentUser'))._id,
+      roomid,
+      userid: JSON.parse(localStorage.getItem('currentUser'))._id,
       fromdate,
       todate,
       totalamount,
       totaldays
     }; 
-    console.log(bookingDetalis)
+    // console.log(bookingDetalis)
 
     try {
       const result = await axios.post('/api/bookings/bookroom', bookingDetalis);
       console.log(result.data)
-      swal.fire('Congratulations', 'Your Room Booked Successfully', 'success')
-        .then( window.location.href = '/bookings' )
+      // swal.fire('Congratulations', 'Your Room Booked Successfully', 'success')
+      //   .then( window.location.href = '/bookings' )
     }
     catch (error) {
       console.log(error)
@@ -90,7 +91,7 @@ function Bookingscreen() {
                             })}
                         </Carousel>
           </div>
-          <div className='col-md-5' style={{ textAlign: 'right' }}>
+          <div className='col-md-5' style={{ textAlign: 'right' }}> 
             <h1>Booking Details</h1>
             <hr />
             <b>
