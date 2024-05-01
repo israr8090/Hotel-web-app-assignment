@@ -16,7 +16,7 @@ function Profilescreen() {
     }, []);
 
     const onChange = (key) => {
-        console.log(key);
+        // console.log(key);
     };
     const items = [
         {

@@ -21,7 +21,7 @@ function MyBookings() {
                 // You can await here
                 setloading(true)
                 const response = await axios.post('/api/bookings/getbookingsbyuserid', { userid: user._id })
-                // console.log(response.data)
+                console.log(response.data)
                 setbookings([response.data])
                 setloading(false)
             } 
@@ -36,19 +36,19 @@ function MyBookings() {
     }, []);
 
     ////----------cancel booking function------
-    // async function cancelBooking(bookingid, roomid) {
-    //     try {
-    //         setloading(true);
-    //         const result = (await axios.post('/api/bookings/cancelbooking', { bookingid, roomid })).data;
-    //         console.log(result)
-    //         setloading(false)
-    //         Swal.fire('Congrats', 'Your Booking has been cancelled', 'success').then(result => {
-    //             window.location.reload();
-    //         })
-    //     } catch (error) {
-    //         console.log(error.message)
-    //     }
-    // }
+    async function cancelBooking(bookingid, roomid) {
+        try {
+            setloading(true);
+            const result = (await axios.post('/api/bookings/cancelbooking', { bookingid, roomid })).data;
+            console.log(result)
+            setloading(false)
+            Swal.fire('Congrats', 'Your Booking has been cancelled', 'success').then(result => {
+                window.location.reload();
+            })
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
 
     return (
         <div className='row'>
@@ -58,17 +58,17 @@ function MyBookings() {
                 return( 
                         <div className='bs'>
                             <h1>{booking.room}</h1> 
-                            <p><b>bookingId</b>: {booking._id}</p>
-                            <p><b>CheckIn</b>: {booking.fromdate}</p>
-                            <p><b>CheckOut</b>: {booking.todate}</p>
+                            <p><b>booking-ID</b>: {booking._id}</p>
+                            <p><b>Check-In</b>: {booking.fromdate}</p>
+                            <p><b>Check-Out</b>: {booking.todate}</p>
                             <p><b>Amount</b>: {booking.totalamount}</p>
                             <p><b>Status</b>:{booking.status === 'cancelled' ? (<Tag color="orange">CANCELLED</Tag>) : (<Tag color="green">CONFIRMED</Tag>)} </p>
 
-                            {/* {booking.status !== 'cancelled' && (
+                            {booking.status !== 'cancelled' && (
                                 <div className='text-right'>
                                     <button className='btn btn-primay' onClick={() => { cancelBooking(booking._id, booking.roomid) }} >CANCEL BOOKING</button>
                                 </div>
-                            )} */}
+                            )}
                         </div>
                     )}))}
             </div>
