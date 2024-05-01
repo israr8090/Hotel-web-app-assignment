@@ -29,7 +29,7 @@ function MyBookings() {
                 seterror(true)
                 console.error(error.message)
                 setloading(false)
-                // Swal.fire('Oops', 'Something Went Wrong', 'error')
+                Swal.fire('Oops', 'Something Went Wrong', 'error')
             }
         }
         fetchData();
