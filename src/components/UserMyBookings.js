@@ -21,8 +21,9 @@ function MyBookings() {
                 // You can await here
                 setloading(true)
                 const response = await axios.post('/api/bookings/getbookingsbyuserid', { userid: user._id })
-                console.log(response.data)
+                // console.log(response.data)
                 setbookings([response.data])
+                console.log(bookings)
                 setloading(false)
             } 
             catch (error) {
@@ -35,7 +36,7 @@ function MyBookings() {
         fetchData();
     }, []);
 
-    ////----------cancel booking function------
+    // ////----------cancel booking function------
     async function cancelBooking(bookingid, roomid) {
         try {
             setloading(true);
@@ -56,7 +57,7 @@ function MyBookings() {
                 {loading && (<Loader />)}
                 {bookings && (bookings.map(booking => {
                 return( 
-                        <div className='bs'>
+                        <div key={booking._id} className='bs'>
                             <h1>{booking.room}</h1> 
                             <p><b>booking-ID</b>: {booking._id}</p>
                             <p><b>Check-In</b>: {booking.fromdate}</p>

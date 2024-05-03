@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
-import swal from 'sweetalert2'
+import swal from 'sweetalert2';
 import moment from 'moment';
+import Stripe from 'react-stripe-checkout';
 import { Carousel } from 'react-bootstrap';
 import { useParams } from 'react-router-dom'
 
@@ -47,7 +48,7 @@ function Bookingscreen() {
     window.location.href = '/home';
   }
 
-  ////--Book Room function-----------------------------
+  // ////--Book Room function-----------------------------
   async function bookRoom() {
     const bookingDetalis = {
       room,
@@ -56,22 +57,80 @@ function Bookingscreen() {
       fromdate,
       todate,
       totalamount,
-      totaldays
-    }; 
+      totaldays,
+    };
     // console.log(bookingDetalis)
 
     try {
       const result = await axios.post('/api/bookings/bookroom', bookingDetalis);
       console.log(result.data)
-      // swal.fire('Congratulations', 'Your Room Booked Successfully', 'success')
-      //   .then( window.location.href = '/bookings' )
+      swal.fire('Congratulations', 'Your Room Booked Successfully', 'success')
+        .then( window.location.href = '/bookings' )
     }
     catch (error) {
       console.log(error)
-      // swal.fire('Ops!', 'Somthing Went Wrong', 'error')
-      //   .then(result => { window.location.href = '/bookings' })
+      swal.fire('Ops!', 'Somthing Went Wrong', 'error')
+        .then(result => { window.location.href = '/bookings' })
     }
   };
+
+  //--------------------for stripe payment--------------------------------
+  // const handleToken = async (totalAmount, token) => {
+    //   const bookingDetalis = {
+      //     room,
+      //     roomid,
+      //     userid: JSON.parse(localStorage.getItem('currentUser'))._id,
+      //     fromdate,
+      //     todate,
+      //     totalamount,
+      //     totaldays,
+      //   };
+      //   try {
+        //     await axios.post('/api/bookings/bookroom', {
+          //       bookingDetalis,
+          //       token: token.id
+          //     });
+          //   } catch (error) {
+            //     console.log(error)
+            //   }
+            // };
+            // const tokenHandler = (token) => {
+              //   handleToken(100, token);
+              // }
+              
+              // async function onToken(token) {
+                //   console.log(token)
+                //   ////--Book Room -----------------------------
+                //   const bookingDetalis = {
+                  //     room,
+                  //     roomid,
+                  //     userid: JSON.parse(localStorage.getItem('currentUser'))._id,
+                  //     fromdate,
+                  //     todate,
+                  //     totalamount,
+                  //     totaldays,
+                  //     email: token.email
+                  //   };
+                  //   console.log(bookingDetalis)
+                  
+  //   try {
+  //     const result = await axios.post('/api/bookings/bookroom', bookingDetalis);
+  //     console.log(result.data)
+  //     console.log("hello")
+  //     // swal.fire('Congratulations', 'Your Room Booked Successfully', 'success')
+  //     //   .then( window.location.href = '/bookings' )
+  //   }
+  //   catch (error) {
+  //     console.log(error)
+  //     // swal.fire('Ops!', 'Somthing Went Wrong', 'error')
+  //     //   .then(result => { window.location.href = '/bookings' })
+  //   }
+  // }
+  //--------------------for stripe payment--------------------------------
+  
+  
+
+
 
   return (
     <div className='m-5'>
@@ -82,16 +141,16 @@ function Bookingscreen() {
           <div className='col-md-5'>
             <h1>{room.roomname}</h1>
             {/* <img src={room.imageurls != null && room.imageurls[0]} className='bigimg' alt='roomimg' /> */}
-              {/* React-bootstrap carousel */}
-              <Carousel prevLabel='' nextLabel=''>
-                            {room.imageurls.map(url => {
-                                return <Carousel.Item>
-                                    <img className='bigimg ' src={url} alt='room img' />
-                                </Carousel.Item>
-                            })}
-                        </Carousel>
+            {/* React-bootstrap carousel */}
+            <Carousel prevLabel='' nextLabel=''>
+              {room.imageurls.map(url => {
+                return <Carousel.Item>
+                  <img className='bigimg ' src={url} alt='room img' />
+                </Carousel.Item>
+              })}
+            </Carousel>
           </div>
-          <div className='col-md-5' style={{ textAlign: 'right' }}> 
+          <div className='col-md-5' style={{ textAlign: 'right' }}>
             <h1>Booking Details</h1>
             <hr />
             <b>
@@ -112,6 +171,18 @@ function Bookingscreen() {
             </div>
 
             <div style={{ float: 'right' }}>
+              {/* <Stripe
+                amount={totalamount * 100}
+                currency='INR'
+                stripeKey='pk_test_51P6CRMSHZjHE7fTlMqQsHghrIkLWkuBwx3HEQ0bXw27NJU7NEjLRqIU3JAT8CPxHppxuDQA5qCNIOycAayCOvRZz00Fh6sy5Hd'
+                token={onToken}>
+                <button className='btn btn-primary mr-2'>Pay Now</button>
+              </Stripe> */}
+
+              {/* <Stripe
+                stripeKey='pk_test_51P6CRMSHZjHE7fTlMqQsHghrIkLWkuBwx3HEQ0bXw27NJU7NEjLRqIU3JAT8CPxHppxuDQA5qCNIOycAayCOvRZz00Fh6sy5Hd'
+                token={tokenHandler} /> */}
+
               <button className='btn btn-primary mr-2' onClick={bookRoom}>Pay Now</button>
               <button className='btn btn-primary' onClick={returnBack}>Back</button>
             </div>

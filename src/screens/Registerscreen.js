@@ -55,8 +55,8 @@ function Registerscreen() {
                         <h2>Register</h2>
                         <input type='text' className='form-control' placeholder='name' value={name} onChange={(e) => { setname(e.target.value) }} />
                         <input type='text' className='form-control' placeholder='email' value={email} onChange={(e) => { setemail(e.target.value) }} />
-                        <input type='text' className='form-control' placeholder='password' value={password} onChange={(e) => { setpassword(e.target.value) }} />
-                        <input type='text' className='form-control' placeholder='confirm password' value={cpassword} onChange={(e) => { setcpassword(e.target.value) }} />
+                        <input type='password' className='form-control' placeholder='password' value={password} onChange={(e) => { setpassword(e.target.value) }} />
+                        <input type='password' className='form-control' placeholder='confirm password' value={cpassword} onChange={(e) => { setcpassword(e.target.value) }} />
                     </div>
                     <button className='btn btn-primary mt-3' onClick={register}>Register</button>
                 </div>
