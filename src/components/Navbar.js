@@ -29,7 +29,7 @@ function Navbar() {
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a className="dropdown-item" href="/profile">Profile</a>
-                  <a className="dropdown-item" href="#" onClick={logout}>Logout</a>
+                  <a className="dropdown-item" href="/home" onClick={logout}>Logout</a>
 
                 </div>
               </div>

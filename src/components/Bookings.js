@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Tabs } from 'antd';
-import swal from 'sweetalert2'
+// import { Tabs } from 'antd';
+// import swal from 'sweetalert2'
 
 import Loader from '../components/Loader';
-import Error from '../components/Error';
+// import Error from '../components/Error';
 
 
 function Bookings() {

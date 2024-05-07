@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
-import { Tabs, Divider, Flex, Tag } from 'antd';
-import Swal from 'sweetalert2'
+import React, { useEffect } from 'react'
+import { Tabs } from 'antd';
 
 import MyBookings from '../components/UserMyBookings';
 
@@ -13,7 +11,7 @@ function Profilescreen() {
         if (!user) {
             window.location.href = '/login';
         }
-    }, []);
+    });
 
     const onChange = (key) => {
         // console.log(key);

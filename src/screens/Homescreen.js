@@ -7,7 +7,6 @@ import moment from 'moment'
 import Room from '../components/Room';
 import Footer from '../components/Footer';
 import Loader from '../components/Loader';
-import Error from '../components/Error';
 
 //--import from antd for date picker
 import { DatePicker } from "antd";
@@ -86,7 +85,7 @@ function Homescreen() {
   function filterByType(e) {
     settype(e)
     if (e !== 'all') {
-      const temprooms = duplicaterooms.filter(room => room.type.toLowerCase() == e.toLowerCase())
+      const temprooms = duplicaterooms.filter(room => room.type.toLowerCase() === e.toLowerCase())
       setrooms(temprooms)
     }
     else {

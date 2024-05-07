@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { Tabs, Divider, Flex, Tag } from 'antd';
+import { Tag } from 'antd';
 import Swal from 'sweetalert2'
 
 import Loader from '../components/Loader';
-import Error from '../components/Error';
+// import Error from '../components/Error';
 
 // ---My Booking Tab Function--------------------------------------------------------
 function MyBookings() {
