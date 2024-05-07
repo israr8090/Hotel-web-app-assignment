@@ -15,7 +15,7 @@ function Users() {
         async function fatch() {
             try {
                 setloading(true)
-                const data = (await axios.get("/api/users/getallusers")).data;
+                const data = (await axios.get("https://hotal-web-app-backend.onrender.com/api/users/getallusers")).data;
                 setusers(data)
                 setloading(false)
             } catch (error) {

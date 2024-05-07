@@ -14,7 +14,7 @@ function Loginscreen() {
         const user = { email, password };
         try {
             setloading(true)
-            axios.post('/api/users/login', user)
+            axios.post('https://hotal-web-app-backend.onrender.com/api/users/login', user)
                 .then(function (response) {
                     // console.log(response.data);
                     setloading(false);

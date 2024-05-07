@@ -15,7 +15,7 @@ function Rooms() {
         async function fatch() {
             try {
                 setloading(true)
-                const data = (await axios.get("/api/rooms/getallrooms")).data;
+                const data = (await axios.get("https://hotal-web-app-backend.onrender.com/api/rooms/getallrooms")).data;
                 setrooms(data)
                 setloading(false)
             } catch (error) {

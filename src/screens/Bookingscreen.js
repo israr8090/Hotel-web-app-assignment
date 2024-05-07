@@ -27,7 +27,7 @@ function Bookingscreen() {
 
     //--------------------
     setloading(true);
-    axios.post('/api/rooms/getroombyid', { _id: roomid })
+    axios.post('https://hotal-web-app-backend.onrender.com/api/rooms/getroombyid', { _id: roomid })
       .then(function (response) {
         // console.log(response.data)
         setroom(response.data);
@@ -62,15 +62,15 @@ function Bookingscreen() {
     // console.log(bookingDetalis)
 
     try {
-      const result = await axios.post('/api/bookings/bookroom', bookingDetalis);
+      const result = await axios.post('https://hotal-web-app-backend.onrender.com/api/bookings/bookroom', bookingDetalis);
       console.log(result.data)
       swal.fire('Congratulations', 'Your Room Booked Successfully', 'success')
-        .then( window.location.href = '/bookings' )
+        .then( window.location.href = '/profile' )
     }
     catch (error) {
       console.log(error)
       swal.fire('Ops!', 'Somthing Went Wrong', 'error')
-        .then(result => { window.location.href = '/bookings' })
+        .then(result => { window.location.href = '/home' })
     }
   };
 

@@ -33,7 +33,7 @@ function AddRooms() {
         // console.log(newroom)
         try {
             setloading(true)
-            const result = await axios.post('api/rooms/addroom', newroom)
+            const result = await axios.post('https://hotal-web-app-backend.onrender.com/api/rooms/addroom', newroom)
             // console.log(result)
             setloading(false)
             swal.fire('Congratulations', 'Your New Room Added Successfully', 'success')
@@ -92,4 +92,4 @@ function AddRooms() {
     )
 };
 
-export default AddRooms
+export default AddRooms 

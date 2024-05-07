@@ -20,7 +20,7 @@ function Registerscreen() {
             const user = { name, email, password, cpassword };
             try {
                 setloading(true)
-                axios.post('/api/users/register', user)
+                axios.post('https://hotal-web-app-backend.onrender.com/api/users/register', user)
                     .then(function (response) {
                         // console.log(response.data);
                     })

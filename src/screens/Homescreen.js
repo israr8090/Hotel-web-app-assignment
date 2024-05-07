@@ -29,7 +29,7 @@ function Homescreen() {
     const fetchData = async () => {
       try {
         setloading(true);
-        const { data } = await axios.get('api/rooms/getallrooms'); //fatch data from Db
+        const { data } = await axios.get('https://hotal-web-app-backend.onrender.com/api/rooms/getallrooms'); //fatch data from Db
         setrooms(data);
         setduplicaterooms(data)
         // console.log(data)

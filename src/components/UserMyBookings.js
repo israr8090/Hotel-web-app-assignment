@@ -20,7 +20,7 @@ function MyBookings() {
             try {
                 // You can await here
                 setloading(true)
-                const response = await axios.post('/api/bookings/getbookingsbyuserid', { userid: user._id })
+                const response = await axios.post('https://hotal-web-app-backend.onrender.com/api/bookings/getbookingsbyuserid', { userid: user._id })
                 // console.log(response.data)
                 setbookings([response.data])
                 console.log(bookings)
@@ -40,7 +40,7 @@ function MyBookings() {
     async function cancelBooking(bookingid, roomid) {
         try {
             setloading(true);
-            const result = (await axios.post('/api/bookings/cancelbooking', { bookingid, roomid })).data;
+            const result = (await axios.post('https://hotal-web-app-backend.onrender.com/api/bookings/cancelbooking', { bookingid, roomid })).data;
             console.log(result)
             setloading(false)
             Swal.fire('Congrats', 'Your Booking has been cancelled', 'success').then(result => {
