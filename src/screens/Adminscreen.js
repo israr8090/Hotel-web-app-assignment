@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 import { Tabs } from 'antd';
 
+//-import components from components folder
 import Bookings from '../components/Bookings'
 import Rooms from '../components/RoomAdmin'
 import Users from '../components/UserReport'
 import AddRooms from '../components/AddRoomsAdmin'
-
-
 
 function Adminscreen() {
     ////--checking is user is admin or not

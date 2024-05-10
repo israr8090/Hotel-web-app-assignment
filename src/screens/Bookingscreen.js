@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import swal from 'sweetalert2';
 import moment from 'moment';
-// import Stripe from 'react-stripe-checkout';
 import { Carousel } from 'react-bootstrap';
 import { useParams } from 'react-router-dom'
+// import Stripe from 'react-stripe-checkout';
 
+//-import components from components folder--
 import Loader from '../components/Loader';
 import Error from '../components/Error';
 
-
 function Bookingscreen() {
+  //-storing data from URL --
   const { roomid, fromdate, todate } = useParams();
+
+  //--Defining States--
   const [loading, setloading] = useState();
   const [room, setroom] = useState();
   // const [error, seterror] = useState();

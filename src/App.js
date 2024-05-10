@@ -1,7 +1,7 @@
-// import 'bootstrap/dist/css/bootstrap.css';
-import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+//-import Navbar component from components folder
 import Navbar from './components/Navbar';
+//-import pages from screen folder
 import Homescreen from './screens/Homescreen';
 import Bookingscreen from './screens/Bookingscreen';
 import Registerscreen from './screens/Registerscreen';
@@ -12,8 +12,8 @@ import Landingscreen from './screens/Landingscreen';
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <BrowserRouter>
+      <Navbar />   
+      <BrowserRouter> 
         <Routes>
           <Route path="/" element= {<Landingscreen/>} />
           <Route path="/home" element= {<Homescreen/>} />
