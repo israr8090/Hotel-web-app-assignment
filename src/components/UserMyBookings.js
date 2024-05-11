@@ -8,7 +8,7 @@ import Loader from '../components/Loader';
 
 // ---My Booking Tab Function--------------------------------------------------------
 function MyBookings() {
-    const [bookings, setbookings] = useState([])
+    const [bookings1, setbookings1] = useState([])
     const [loading, setloading] = useState();
     const [error, seterror] = useState();
 
@@ -22,8 +22,8 @@ function MyBookings() {
                 setloading(true)
                 const response = await axios.post('https://hotal-web-app-backend.onrender.com/api/bookings/getbookingsbyuserid', { userid: user._id })
                 // console.log(response.data)
-                setbookings([response.data])
-                console.log(bookings)
+                setbookings1(response.data)
+                // console.log(bookings1)
                 setloading(false)
             } 
             catch (error) {
@@ -40,7 +40,7 @@ function MyBookings() {
     async function cancelBooking(bookingid, roomid) {
         try {
             setloading(true);
-            const result = (await axios.post('https://hotal-web-app-backend.onrender.com/api/bookings/cancelbooking', { bookingid, roomid })).data;
+            const result = (await axios.post('api/bookings/cancelbooking', { bookingid, roomid })).data;
             console.log(result)
             setloading(false)
             Swal.fire('Congrats', 'Your Booking has been cancelled', 'success').then(result => {
@@ -52,18 +52,18 @@ function MyBookings() {
     }
 
     return (
-        <div className='row'>
-            <div className='col-md-6'>
+        <div className='row myprofile-bookings'>
+            <div className='col-md-8 ml-5'>
                 {loading && (<Loader />)}
-                {bookings && (bookings.map(booking => {
+                {bookings1 && (bookings1.map(booking => {
                 return( 
-                        <div key={booking._id} className='bs'>
+                        <div key={booking._id} className='bs bookings-cards'>
                             <h1>{booking.room}</h1> 
-                            <p><b>booking-ID</b>: {booking._id}</p>
-                            <p><b>Check-In</b>: {booking.fromdate}</p>
-                            <p><b>Check-Out</b>: {booking.todate}</p>
-                            <p><b>Amount</b>: {booking.totalamount}</p>
-                            <p><b>Status</b>:{booking.status === 'cancelled' ? (<Tag color="orange">CANCELLED</Tag>) : (<Tag color="green">CONFIRMED</Tag>)} </p>
+                            <p><b>booking-ID</b>  : {booking._id}</p>
+                            <p><b>Check-In</b> : {booking.fromdate}</p>
+                            <p><b>Check-Out</b> : {booking.todate}</p>
+                            <p><b>Amount</b> : {booking.totalamount}</p>
+                            <p><b>Status </b>: {booking.status === 'cancelled' ? (<Tag color="orange">CANCELLED</Tag>) : (<Tag color="green">CONFIRMED</Tag>)} </p>
 
                             {booking.status !== 'cancelled' && (
                                 <div className='text-right'>
@@ -72,6 +72,7 @@ function MyBookings() {
                             )}
                         </div>
                     )}))}
+               
             </div>
         </div>
     )

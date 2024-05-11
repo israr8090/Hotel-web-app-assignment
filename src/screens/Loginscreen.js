@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
 
@@ -35,18 +36,19 @@ function Loginscreen() {
     }
 
     return (
-        <div>
+        <div className='myprofile'>
             {loading && (<Loader/>)}
             <div className='row justify-content-center w-100 mt-5'>
 
                 <div className='col-md-5 mt-5'>
                     {error && (<Error message= {'Invalid Creadntials'} />)}
-                    <div className='bs'>
+                    <div className='bs bg-light '>
                         <h2>Login</h2>
                         <input type='text' className='form-control' placeholder='email' value={email} onChange={(e) => { setemail(e.target.value) }} />
                         <input type='password' className='form-control' placeholder='password' value={password} onChange={(e) => { setpassword(e.target.value) }} />
                     </div>
                     <button className='btn btn-primary mt-3' onClick={login}>Login</button>
+                    <Link to="/register" className='btn btn-light mt-3'>create a account</Link>
                 </div>
 
             </div>

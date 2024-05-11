@@ -28,7 +28,6 @@ function Bookingscreen() {
       window.location.href = '/login'
     }
 
-    //--------------------
     setloading(true);
     axios.post('https://hotal-web-app-backend.onrender.com/api/rooms/getroombyid', { _id: roomid })
       .then(function (response) {
@@ -77,77 +76,17 @@ function Bookingscreen() {
     }
   };
 
-  //--------------------for stripe payment--------------------------------
-  // const handleToken = async (totalAmount, token) => {
-    //   const bookingDetalis = {
-      //     room,
-      //     roomid,
-      //     userid: JSON.parse(localStorage.getItem('currentUser'))._id,
-      //     fromdate,
-      //     todate,
-      //     totalamount,
-      //     totaldays,
-      //   };
-      //   try {
-        //     await axios.post('/api/bookings/bookroom', {
-          //       bookingDetalis,
-          //       token: token.id
-          //     });
-          //   } catch (error) {
-            //     console.log(error)
-            //   }
-            // };
-            // const tokenHandler = (token) => {
-              //   handleToken(100, token);
-              // }
-              
-              // async function onToken(token) {
-                //   console.log(token)
-                //   ////--Book Room -----------------------------
-                //   const bookingDetalis = {
-                  //     room,
-                  //     roomid,
-                  //     userid: JSON.parse(localStorage.getItem('currentUser'))._id,
-                  //     fromdate,
-                  //     todate,
-                  //     totalamount,
-                  //     totaldays,
-                  //     email: token.email
-                  //   };
-                  //   console.log(bookingDetalis)
-                  
-  //   try {
-  //     const result = await axios.post('/api/bookings/bookroom', bookingDetalis);
-  //     console.log(result.data)
-  //     console.log("hello")
-  //     // swal.fire('Congratulations', 'Your Room Booked Successfully', 'success')
-  //     //   .then( window.location.href = '/bookings' )
-  //   }
-  //   catch (error) {
-  //     console.log(error)
-  //     // swal.fire('Ops!', 'Somthing Went Wrong', 'error')
-  //     //   .then(result => { window.location.href = '/bookings' })
-  //   }
-  // }
-  //--------------------for stripe payment--------------------------------
-  
-  
-
-
-
   return (
-    <div className='m-5'>
+    <div className='m-5 bookingscreen'>
 
       {loading ? (<Loader />) : room ? (<div>
 
-        <div className='row justify-content-between margin-top bs'>
+        <div className='row justify-content-between margin-top bs1 p-3 rounded-5'>
           <div className='col-md-5'>
             <h1>{room.roomname}</h1>
-            {/* <img src={room.imageurls != null && room.imageurls[0]} className='bigimg' alt='roomimg' /> */}
-            {/* React-bootstrap carousel */}
             <Carousel prevLabel='' nextLabel=''>
               {room.imageurls.map(url => {
-                return <Carousel.Item>
+                return <Carousel.Item key={room._id}>
                   <img className='bigimg ' src={url} alt='room img' />
                 </Carousel.Item>
               })}
@@ -174,19 +113,7 @@ function Bookingscreen() {
             </div>
 
             <div style={{ float: 'right' }}>
-              {/* <Stripe
-                amount={totalamount * 100}
-                currency='INR'
-                stripeKey='pk_test_51P6CRMSHZjHE7fTlMqQsHghrIkLWkuBwx3HEQ0bXw27NJU7NEjLRqIU3JAT8CPxHppxuDQA5qCNIOycAayCOvRZz00Fh6sy5Hd'
-                token={onToken}>
-                <button className='btn btn-primary mr-2'>Pay Now</button>
-              </Stripe> */}
-
-              {/* <Stripe
-                stripeKey='pk_test_51P6CRMSHZjHE7fTlMqQsHghrIkLWkuBwx3HEQ0bXw27NJU7NEjLRqIU3JAT8CPxHppxuDQA5qCNIOycAayCOvRZz00Fh6sy5Hd'
-                token={tokenHandler} /> */}
-
-              <button className='btn btn-primary mr-2' onClick={bookRoom}>Pay Now</button>
+              <button type='button' className='btn btn-primary mr-2' onClick={bookRoom}>Pay Now</button>
               <button className='btn btn-primary' onClick={returnBack}>Back</button>
             </div>
 

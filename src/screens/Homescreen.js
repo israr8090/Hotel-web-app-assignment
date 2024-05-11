@@ -45,7 +45,7 @@ function Homescreen() {
 
   //--funciton for filger Rooms by date--
   function filterByDate(dates) {
-
+      //--set dates ins useState
     setfromdate((dates[0]).format('DD-MM-YYYY'))
     settodate((dates[1]).format('DD-MM-YYYY'))
 

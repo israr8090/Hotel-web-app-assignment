@@ -47,7 +47,7 @@ function Bookings() {
                         </thead>
                         <tbody>
                             {bookings.length && (bookings.map(booking => {
-                                return <tr>
+                                return <tr >
                                     <td>{booking._id}</td>
                                     <td>{booking.userid}</td>
                                     <td>{booking.room}</td>

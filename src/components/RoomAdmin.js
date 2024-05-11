@@ -46,7 +46,7 @@ function Rooms() {
                         </thead>
                         <tbody>
                             {rooms.length && (rooms.map(room => {
-                                return <tr>
+                                return <tr key={room._id}>
                                     <td>{room._id}</td>
                                     <td>{room.name}</td>
                                     <td>{room.type}</td>

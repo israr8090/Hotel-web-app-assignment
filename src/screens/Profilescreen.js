@@ -20,13 +20,15 @@ function Profilescreen() {
         {
             key: '1',
             label: 'Profile',
-            children: <>
+            children: <div  className='myprofile'>
+                <div >
                 <h1>My Profile</h1>,
                 <br />
                 <h1>Name : {user.name}</h1>
                 <h1>Email : {user.email}</h1>
                 <h1>isAdmin : {user.isAdmin ? 'Yes' : 'No'}</h1>
-            </>
+                </div>
+            </div>
         },
         {
             key: '2',
@@ -37,7 +39,7 @@ function Profilescreen() {
     
     return (
         <>
-            <Tabs defaultActiveKey="1" items={items} onChange={onChange} className='ml-3 margin-top' />;
+            <Tabs defaultActiveKey="1" items={items} onChange={onChange} className='tab' />;
         </>
     )
 }
